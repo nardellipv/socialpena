@@ -27,27 +27,29 @@
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <div class="login-reg-bg">
                         <div class="log-reg-area sign">
-                            <h2 class="log-title">Login</h2>
-                            @include('alerts.error')
-                            <form method="POST" action="{{ route('login') }}">
+                            <h2 class="log-title">Registro</h2>
+                            <p>
+                                Complete los campos faltan, si llega haber un error comuniquese con la peña para
+                                corregirlo.
+                            </p>
+                            <form method="POST" action="{{ route('register.update') }}">
                                 @csrf
                                 <div class="form-group">
-                                    <input id="email" type="email"
-                                        class="form-control @error('email') is-invalid @enderror" name="email"
-                                        value="{{ old('email') }}" required autocomplete="email"> <label
-                                        class="control-label" for="input">Email</label><i class="mtrl-select"></i>
-
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    <input class="form-control" id="readOnlyInput" type="text" placeholder="{{ $user->name }}" readonly="">                                    
                                 </div>
+                                <div class="form-group">
+                                    <input class="form-control" id="readOnlyInput" type="text" placeholder="{{ $user->email }}" readonly="">
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" id="readOnlyInput" type="text" placeholder="{{ $user->number_member }}" readonly="">
+                                    <input value="{{ $user->number_member }}" name="number_member" hidden readonly>
+                                </div>
+
                                 <div class="form-group">
                                     <input id="password" type="password"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
-                                        required autocomplete="current-password" />
-                                    <label class="control-label" for="input">Password</label><i class="mtrl-select"></i>
+                                        required autocomplete="new-password">
+                                    <label class="control-label" for="input">Ingresar Password</label><i class="mtrl-select"></i>
 
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
@@ -55,17 +57,15 @@
                                         </span>
                                     @enderror
                                 </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" id="remember"
-                                            {{ old('remember') ? 'checked' : '' }} /><i class="check-box"></i>
-                                        Recordarme
-                                    </label>
+
+                                <div class="form-group">
+                                    <input id="password-confirm" type="password" class="form-control"
+                                        name="password_confirmation" required autocomplete="new-password">
+                                    <label class="control-label" for="input">Repetir Password</label><i class="mtrl-select"></i>
                                 </div>
-                                <a href="#" title="" class="forgot-pwd">Recuperar contraseña</a>
+                                                               
                                 <div class="submit-btns">
-                                    <button type="submit" class="btn btn-primary">Ingresar</button>
-                                    <a href="{{ route('register.step2') }}" class="btn btn-warning">Registrarte</a>
+                                    <button class="mtr-btn" type="submit"><span>Registrarse</span></button>
                                 </div>
                             </form>
                         </div>
@@ -74,8 +74,11 @@
             </div>
         </div>
     </div>
+
     <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="{{ asset('styleWeb/js/main.min.js') }}"></script>
     <script src="{{ asset('styleWeb/js/script.js') }}"></script>
+
 </body>
+
 </html>

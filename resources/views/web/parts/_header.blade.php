@@ -4,7 +4,7 @@
             <a class="" href="#menu"><i class="fa fa-align-justify"></i></a>
         </span>
         <span class="mh-text">
-            <a href="newsfeed.html" title=""><img src="{{ asset('styleWeb/images/logo2.png')}}" alt=""></a>
+            <a href="newsfeed.html" title=""><img src="{{ asset('styleWeb/images/logo.png')}}" alt=""></a>
         </span>
         <span class="mh-btns-right">
             <a class="fa fa-sliders" href="#shoppingbag"></a>
@@ -188,7 +188,9 @@
 
 <div class="topbar stick">
     <div class="logo">
-        <a title="" href="newsfeed.html"><img src="{{ asset('styleWeb/images/logo.png')}}" alt=""></a>
+        <a title="" href="{{ route('home') }}">
+            <img src="{{ asset('styleWeb/images/logo.png')}}" alt="log peña martin palermo" style="width: 70%;">
+        </a>
     </div>
     
     <div class="top-area">
