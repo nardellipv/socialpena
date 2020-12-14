@@ -9,7 +9,6 @@ $factory->define(Post::class, function (Faker $faker) {
     return [
         'text' => $faker->text('100'),
         'picture' => $faker->imageUrl(),
-        'view' => rand('10','200'),
         'like' => rand('10','200'),
         'dislike' => rand('10','200'),
         'user_id' => rand('1','10'),     

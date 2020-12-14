@@ -8,7 +8,6 @@ use Faker\Generator as Faker;
 $factory->define(Profile::class, function (Faker $faker) {
     return [
         'about' => $faker->text('100'),
-        'gender' => $faker->randomElement($array = array('F', 'M')),
         'user_id' => rand('1','10'),  
     ];
 });

@@ -2,17 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\Http\Requests\LoginNumberMemberRequest;
+use App\Post;
 use App\User;
-use GuzzleHttp\Psr7\Message;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        return view('web.index');
+        $posts = Post::with(['user', 'comment', 'comment.user'])
+            ->orderBy('created_at', 'DESC')
+            ->get();
+
+        $user = User::where('id', Auth::user()->id)
+            ->first();
+
+        /* $feed= FeedReader::read('https://www.feedforall.com/sample.xml');
+            dd($feed); */
+
+        return view('web.index', compact('posts', 'user'));
     }
 
     public function step3(LoginNumberMemberRequest $request)
@@ -30,6 +42,13 @@ class HomeController extends Controller
             return view('web.parts.login.registerStep2');
         }
 
+
+        $path = 'users/' . $user->number_member;
+
+        if (!is_dir($path)) {
+            mkdir('users/' . $user->number_member);
+        }
+
         return view('web.parts.login.registerStep3', compact('user'));
     }
 
@@ -38,6 +57,9 @@ class HomeController extends Controller
         $user = User::where('number_member', $request->number_member)
             ->first();
 
+        $profile_number = mt_rand(1000000000, 9999999999);
+
+        $user->profile_number = $profile_number;
         $user->status = 'ACTIVE';
         $user->password = bcrypt($request['password']);
 

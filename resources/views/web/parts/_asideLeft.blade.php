@@ -1,26 +1,22 @@
 <aside class="sidebar static">
     <div class="widget">
-        <h4 class="widget-title">Shortcuts</h4>
+        <h4 class="widget-title">Menú</h4>
         <ul class="naves">
             <li>
                 <i class="ti-clipboard"></i>
-                <a href="newsfeed.html" title="">News feed</a>
+                <a href="{{ route('home') }}" title="">Nuevos Posteos</a>
             </li>
             <li>
-                <i class="ti-mouse-alt"></i>
-                <a href="inbox.html" title="">Inbox</a>
-            </li>
-            <li>
-                <i class="ti-files"></i>
-                <a href="fav-page.html" title="">My pages</a>
+                <i class="ti-menu"></i>
+                <a href="{{ route('post.index', Auth::user()->profile_number) }}" title="">Time Line</a>
             </li>
             <li>
                 <i class="ti-user"></i>
-                <a href="timeline-friends.html" title="">friends</a>
+                <a href="{{ route('profile.edit', Auth::user()->profile_number) }}" title="">Perfil</a>
             </li>
             <li>
                 <i class="ti-image"></i>
-                <a href="timeline-photos.html" title="">images</a>
+                <a href="timeline-photos.html" title="">Imagenes</a>
             </li>
             <li>
                 <i class="ti-video-camera"></i>

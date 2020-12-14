@@ -1,14 +1,12 @@
 <div class="responsive-header">
     <div class="mh-head first Sticky">
-        <span class="mh-btns-left">
+        {{--  <span class="mh-btns-left">
             <a class="" href="#menu"><i class="fa fa-align-justify"></i></a>
-        </span>
+        </span>  --}}
         <span class="mh-text">
-            <a href="newsfeed.html" title=""><img src="{{ asset('styleWeb/images/logo.png')}}" alt=""></a>
+            <a href="newsfeed.html" title=""><img src="{{ asset('styleWeb/images/logo.png') }}" alt=""></a>
         </span>
-        <span class="mh-btns-right">
-            <a class="fa fa-sliders" href="#shoppingbag"></a>
-        </span>
+        
     </div>
     <div class="mh-head second">
         <form class="mh-form">
@@ -16,7 +14,7 @@
             <a href="#/" class="fa fa-search"></a>
         </form>
     </div>
-    <nav id="menu" class="res-menu">
+    {{--  <nav id="menu" class="res-menu">
         <ul>
             <li><span>Home</span>
                 <ul>
@@ -40,8 +38,8 @@
                     <li><a href="groups.html" title="">groups page</a></li>
                     <li><a href="page-likers.html" title="">Likes page</a></li>
                     <li><a href="people-nearby.html" title="">people nearby</a></li>
-                    
-                    
+
+
                 </ul>
             </li>
             <li><span>Account Setting</span>
@@ -117,84 +115,18 @@
             <li><a href="contact-branches.html" title="">Contact Us2</a></li>
             <li><a href="widgets.html" title="">Widgts</a></li>
         </ul>
-    </nav>
-    <nav id="shoppingbag">
-        <div>
-            <div class="">
-                <form method="post">
-                    <div class="setting-row">
-                        <span>use night mode</span>
-                        <input type="checkbox" id="nightmode"/> 
-                        <label for="nightmode" data-on-label="ON" data-off-label="OFF"></label>
-                    </div>
-                    <div class="setting-row">
-                        <span>Notifications</span>
-                        <input type="checkbox" id="switch2"/> 
-                        <label for="switch2" data-on-label="ON" data-off-label="OFF"></label>
-                    </div>
-                    <div class="setting-row">
-                        <span>Notification sound</span>
-                        <input type="checkbox" id="switch3"/> 
-                        <label for="switch3" data-on-label="ON" data-off-label="OFF"></label>
-                    </div>
-                    <div class="setting-row">
-                        <span>My profile</span>
-                        <input type="checkbox" id="switch4"/> 
-                        <label for="switch4" data-on-label="ON" data-off-label="OFF"></label>
-                    </div>
-                    <div class="setting-row">
-                        <span>Show profile</span>
-                        <input type="checkbox" id="switch5"/> 
-                        <label for="switch5" data-on-label="ON" data-off-label="OFF"></label>
-                    </div>
-                </form>
-                <h4 class="panel-title">Account Setting</h4>
-                <form method="post">
-                    <div class="setting-row">
-                        <span>Sub users</span>
-                        <input type="checkbox" id="switch6" /> 
-                        <label for="switch6" data-on-label="ON" data-off-label="OFF"></label>
-                    </div>
-                    <div class="setting-row">
-                        <span>personal account</span>
-                        <input type="checkbox" id="switch7" /> 
-                        <label for="switch7" data-on-label="ON" data-off-label="OFF"></label>
-                    </div>
-                    <div class="setting-row">
-                        <span>Business account</span>
-                        <input type="checkbox" id="switch8" /> 
-                        <label for="switch8" data-on-label="ON" data-off-label="OFF"></label>
-                    </div>
-                    <div class="setting-row">
-                        <span>Show me online</span>
-                        <input type="checkbox" id="switch9" /> 
-                        <label for="switch9" data-on-label="ON" data-off-label="OFF"></label>
-                    </div>
-                    <div class="setting-row">
-                        <span>Delete history</span>
-                        <input type="checkbox" id="switch10" /> 
-                        <label for="switch10" data-on-label="ON" data-off-label="OFF"></label>
-                    </div>
-                    <div class="setting-row">
-                        <span>Expose author name</span>
-                        <input type="checkbox" id="switch11" /> 
-                        <label for="switch11" data-on-label="ON" data-off-label="OFF"></label>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </nav>
+    </nav>  --}}
 </div><!-- responsive header -->
 
 <div class="topbar stick">
     <div class="logo">
         <a title="" href="{{ route('home') }}">
-            <img src="{{ asset('styleWeb/images/logo.png')}}" alt="log peña martin palermo" style="width: 70%;">
+            <img src="{{ asset('styleWeb/images/logo.png') }}" alt="log peña martin palermo" style="width: 70%;margin-left: 150%;">
         </a>
     </div>
-    
+
     <div class="top-area">
-        <ul class="main-menu">
+        {{--  <ul class="main-menu">
             <li>
                 <a href="#" title="">Home</a>
                 <ul>
@@ -247,7 +179,7 @@
                     <li><a href="widgets.html" title="">Widgts</a></li>
                 </ul>
             </li>
-        </ul>
+        </ul>  --}}
         <ul class="setting-area">
             <li>
                 <a href="#" title="Home" data-ripple=""><i class="ti-search"></i></a>
@@ -268,7 +200,7 @@
                     <ul class="drops-menu">
                         <li>
                             <a href="notifications.html" title="">
-                                <img src="{{ asset('styleWeb/images/resources/thumb-1.jpg')}}" alt="">
+                                <img src="{{ asset('styleWeb/images/resources/thumb-1.jpg') }}" alt="">
                                 <div class="mesg-meta">
                                     <h6>sarah Loren</h6>
                                     <span>Hi, how r u dear ...?</span>
@@ -279,7 +211,7 @@
                         </li>
                         <li>
                             <a href="notifications.html" title="">
-                                <img src="{{ asset('styleWeb/images/resources/thumb-2.jpg')}}" alt="">
+                                <img src="{{ asset('styleWeb/images/resources/thumb-2.jpg') }}" alt="">
                                 <div class="mesg-meta">
                                     <h6>Jhon doe</h6>
                                     <span>Hi, how r u dear ...?</span>
@@ -290,7 +222,7 @@
                         </li>
                         <li>
                             <a href="notifications.html" title="">
-                                <img src="{{ asset('styleWeb/images/resources/thumb-3.jpg')}}" alt="">
+                                <img src="{{ asset('styleWeb/images/resources/thumb-3.jpg') }}" alt="">
                                 <div class="mesg-meta">
                                     <h6>Andrew</h6>
                                     <span>Hi, how r u dear ...?</span>
@@ -301,7 +233,7 @@
                         </li>
                         <li>
                             <a href="notifications.html" title="">
-                                <img src="{{ asset('styleWeb/images/resources/thumb-4.jpg')}}" alt="">
+                                <img src="{{ asset('styleWeb/images/resources/thumb-4.jpg') }}" alt="">
                                 <div class="mesg-meta">
                                     <h6>Tom cruse</h6>
                                     <span>Hi, how r u dear ...?</span>
@@ -312,7 +244,7 @@
                         </li>
                         <li>
                             <a href="notifications.html" title="">
-                                <img src="{{ asset('styleWeb/images/resources/thumb-5.jpg')}}" alt="">
+                                <img src="{{ asset('styleWeb/images/resources/thumb-5.jpg') }}" alt="">
                                 <div class="mesg-meta">
                                     <h6>Amy</h6>
                                     <span>Hi, how r u dear ...?</span>
@@ -332,7 +264,7 @@
                     <ul class="drops-menu">
                         <li>
                             <a href="notifications.html" title="">
-                                <img src="{{ asset('styleWeb/images/resources/thumb-1.jpg')}}" alt="">
+                                <img src="{{ asset('styleWeb/images/resources/thumb-1.jpg') }}" alt="">
                                 <div class="mesg-meta">
                                     <h6>sarah Loren</h6>
                                     <span>Hi, how r u dear ...?</span>
@@ -343,7 +275,7 @@
                         </li>
                         <li>
                             <a href="notifications.html" title="">
-                                <img src="{{ asset('styleWeb/images/resources/thumb-2.jpg')}}" alt="">
+                                <img src="{{ asset('styleWeb/images/resources/thumb-2.jpg') }}" alt="">
                                 <div class="mesg-meta">
                                     <h6>Jhon doe</h6>
                                     <span>Hi, how r u dear ...?</span>
@@ -354,7 +286,7 @@
                         </li>
                         <li>
                             <a href="notifications.html" title="">
-                                <img src="{{ asset('styleWeb/images/resources/thumb-3.jpg')}}" alt="">
+                                <img src="{{ asset('styleWeb/images/resources/thumb-3.jpg') }}" alt="">
                                 <div class="mesg-meta">
                                     <h6>Andrew</h6>
                                     <span>Hi, how r u dear ...?</span>
@@ -365,7 +297,7 @@
                         </li>
                         <li>
                             <a href="notifications.html" title="">
-                                <img src="{{ asset('styleWeb/images/resources/thumb-4.jpg')}}" alt="">
+                                <img src="{{ asset('styleWeb/images/resources/thumb-4.jpg') }}" alt="">
                                 <div class="mesg-meta">
                                     <h6>Tom cruse</h6>
                                     <span>Hi, how r u dear ...?</span>
@@ -376,7 +308,7 @@
                         </li>
                         <li>
                             <a href="notifications.html" title="">
-                                <img src="{{ asset('styleWeb/images/resources/thumb-5.jpg')}}" alt="">
+                                <img src="{{ asset('styleWeb/images/resources/thumb-5.jpg') }}" alt="">
                                 <div class="mesg-meta">
                                     <h6>Amy</h6>
                                     <span>Hi, how r u dear ...?</span>
@@ -389,29 +321,24 @@
                     <a href="messages.html" title="" class="more-mesg">view more</a>
                 </div>
             </li>
-            <li><a href="#" title="Languages" data-ripple=""><i class="fa fa-globe"></i></a>
-                <div class="dropdowns languages">
-                    <a href="#" title=""><i class="ti-check"></i>English</a>
-                    <a href="#" title="">Arabic</a>
-                    <a href="#" title="">Dutch</a>
-                    <a href="#" title="">French</a>
-                </div>
-            </li>
         </ul>
         <div class="user-img">
-            <img src="{{ asset('styleWeb/images/resources/admin.jpg')}}" alt="">
-            <span class="status f-online"></span>
+            @if ($user->picture)
+                <img src="{{ asset('styleWeb/users/' . $user->number_member) }}" alt="">
+            @else
+                <img src="{{ asset('styleWeb/images/logo.png') }}" alt="" style="width: 65%;">
+            @endif
             <div class="user-setting">
-                <a href="#" title=""><span class="status f-online"></span>online</a>
-                <a href="#" title=""><span class="status f-away"></span>away</a>
-                <a href="#" title=""><span class="status f-off"></span>offline</a>
-                <a href="#" title=""><i class="ti-user"></i> view profile</a>
-                <a href="#" title=""><i class="ti-pencil-alt"></i>edit profile</a>
-                <a href="#" title=""><i class="ti-target"></i>activity log</a>
-                <a href="#" title=""><i class="ti-settings"></i>account setting</a>
-                <a href="#" title=""><i class="ti-power-off"></i>log out</a>
+                <a href="#" title=""><i class="ti-pencil-alt"></i>perfil</a>
+                <a href="{{ route('post.index', $user->profile_number) }}" title=""><i class="ti-menu"></i>Time
+                    Line</a>
+                <a href="{{ route('logout') }}"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();" title=""><i
+                        class="ti-power-off"></i>salir</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
             </div>
         </div>
-        <span class="ti-menu main-menu" data-ripple=""></span>
     </div>
 </div><!-- topbar -->

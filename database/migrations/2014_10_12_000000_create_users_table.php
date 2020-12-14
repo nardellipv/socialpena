@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name', 50);
 
+            $table->string('profile_number', 20)->nullable();
             $table->string('dni', 20)->nullable();
             $table->string('phone', 20)->nullable();
             $table->date('birth_date')->nullable();
@@ -24,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('version', 10)->nullable();
             $table->enum('category', ['ADHERENTE', 'ACTIVO', 'COMISION', 'SIN CATEGORIA']);
             $table->string('photo')->nullable();
+            $table->string('header')->nullable();
 
             $table->string('email', 150)->nullable();
             $table->enum('status', ['ACTIVE', 'INACTIVE'])->default('INACTIVE');

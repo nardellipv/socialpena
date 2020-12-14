@@ -18,7 +18,6 @@ class CreatePostsTable extends Migration
 
             $table->mediumText('text');
             $table->string('picture')->nullable();
-            $table->integer('view')->default('0');
             $table->integer('like')->default('0');
             $table->integer('dislike')->default('0');
 
