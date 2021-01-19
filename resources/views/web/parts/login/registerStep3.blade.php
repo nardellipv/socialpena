@@ -38,7 +38,7 @@
                                     <input class="form-control" id="readOnlyInput" type="text" placeholder="{{ $user->name }}" readonly="">                                    
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" id="readOnlyInput" type="text" placeholder="{{ $user->email }}" readonly="">
+                                    <input class="form-control" id="readOnlyInput" name="email" type="text" value="{{ $user->email }}" required>
                                 </div>
                                 <div class="form-group">
                                     <input class="form-control" id="readOnlyInput" type="text" placeholder="{{ $user->number_member }}" readonly="">

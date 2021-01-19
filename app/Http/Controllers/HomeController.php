@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Comment;
-use App\Http\Requests\LoginNumberMemberRequest;
 use App\Post;
 use App\User;
-use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\LoginNumberMemberRequest;
+use App\Profile;
 
 class HomeController extends Controller
 {
@@ -28,7 +27,7 @@ class HomeController extends Controller
     }
 
     public function step3(LoginNumberMemberRequest $request)
-    {
+    {        
         $user = User::where('number_member', $request->number_member)
             ->first();
 
@@ -43,11 +42,11 @@ class HomeController extends Controller
         }
 
 
-        $path = 'users/' . $user->number_member;
+/*         $path = 'users/' . $user->number_member;
 
         if (!is_dir($path)) {
             mkdir('users/' . $user->number_member);
-        }
+        } */
 
         return view('web.parts.login.registerStep3', compact('user'));
     }
@@ -60,10 +59,21 @@ class HomeController extends Controller
         $profile_number = mt_rand(1000000000, 9999999999);
 
         $user->profile_number = $profile_number;
+        $user->email = $request['email'];
         $user->status = 'ACTIVE';
         $user->password = bcrypt($request['password']);
 
         $user->save();
+
+        Profile::create([
+            'user_id' => $user->id,
+        ]);
+
+        $path = 'users/' . $profile_number;
+
+        if (!is_dir($path)) {
+            mkdir('users/' . $profile_number);
+        }
 
         return view('auth.login');
     }

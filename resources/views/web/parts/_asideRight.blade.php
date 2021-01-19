@@ -1,17 +1,37 @@
 <aside class="sidebar static">
-    @if (route::is('profile.edit'))
+    @if (Route::current('profile.edit'))
         <div class="widget">
-                @include('web.parts.profile._asideEditInfo')
+            @include('web.parts.profile._asideEditInfo')
         </div>
     @endif
 
     <div class="widget">
-        <h4 class="widget-title">Your page</h4>
-        <div class="your-page">
-            
-        </div>
+        <h4 class="widget-title" style="margin-bottom: 0%;">Post con más likes</h4>
+        @foreach ($postLikes as $postLike)
+            <div class="friend-info" style="padding: 10px;">
+                <figure>
+                    @if ($user->picture)
+                        <img src="{{ asset('styleWeb/users/' . $user->profile_number) }}" alt="">
+                    @else
+                        <img src="{{ asset('styleWeb/images/logo.png') }}" alt="">
+                    @endif
+                </figure>
+                <div class="friend-name">
+                    <ins><a href="{{ route('post.index', $postLike->user->profile_number) }}"
+                            title="">{{ $postLike->user->nickname }}</a></ins>
+                    <span>publicado: {{ \Carbon\Carbon::parse($postLike->created_at)->format('d-M-Y') }}</span>
+                </div>
+                <div class="postLike-meta">
+                    <img src="{{ asset('users/' . $user->profile_number . '/592x320-' . $postLike->picture) }}" alt="">
+                    <div class="description">
+                        <p>{!! $postLike->text !!}</p>
+                    </div>
+                </div>
+            </div>
+            <hr>
+        @endforeach
     </div>
-    <div class="widget">
+    {{--  <div class="widget">
         <div class="banner medium-opacity bluesh">
             <div class="bg-image" style="background-image: url(images/resources/baner-widgetbg.jpg)"></div>
             <div class="baner-top">
@@ -206,6 +226,6 @@
                     <button type="submit"></button>
                 </form>
             </div>
-        </div>
-    </div><!-- friends list sidebar -->
+        </div>  
+    </div>--}}
 </aside>

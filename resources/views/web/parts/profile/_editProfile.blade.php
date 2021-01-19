@@ -17,10 +17,14 @@
                     <div class="form-group">
                         <h5 class="sender-name">{{ $user->name }} </h5>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group half">
                         <input type="text" required="required" name="email" value="{{ $user->email }}" />
                         <label class="control-label" for="input">Email [no se mostrará tu email]</label><i
                             class="mtrl-select"></i>
+                    </div>
+                    <div class="form-group half">
+                        <input type="text" name="nickname" value="{{ old('nickname', $user->nickname) }}" />
+                        <label class="control-label" for="input">Apodo</label><i class="mtrl-select"></i>
                     </div>
                     <div class="form-group half">
                         <input type="text" required="required" name="dni" value="{{ old('dni', $user->dni) }}" />

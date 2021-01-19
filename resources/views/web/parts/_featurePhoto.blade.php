@@ -23,18 +23,21 @@
                 <div class="col-lg-2 col-sm-3">
                     <div class="user-avatar">
                         <figure>
-                            @if ($user->picture)
-                                <img src="{{ asset('styleWeb/users/' . $user->number_member) }}" alt="">
+                            @if ($user->photo)
+                                <img src="{{ asset('users/' . $user->profile_number . '/195x195-' . $user->photo) }}" alt="">
                             @else
                                 <img src="{{ asset('styleWeb/images/logo.png') }}" alt="" style="width: 65%;">
                             @endif
-                            <form class="edit-phto">
+                            @if(Auth::user()->profile_number == $user->profile_number)
+                            <form class="edit-phto" action="{{ route('photo.update', $user->profile_number) }}" method="POST" enctype="multipart/form-data">
+                                @csrf
                                 <i class="fa fa-camera-retro"></i>
                                 <label class="fileContainer">
                                     Cambiar foto perfil
-                                    <input type="file" />
+                                    <input type="file" name="picture" onchange="this.form.submit()" />
                                 </label>
                             </form>
+                            @endif
                         </figure>
                     </div>
                 </div>
@@ -42,15 +45,15 @@
                     <div class="timeline-info">
                         <ul>
                             <li class="admin-name">
-                                <h5>{{ $user->name }}</h5>
+                                <h5>{{ $user->nickname }}</h5>
                                 <span>Socio {{ $user->category }}</span>
                             </li>
                             <li>
-                                <a class="{{ route::is('post.index') ? 'active' : '' }}" href="{{ route('post.index', $user->profile_number) }}" title="" data-ripple="">time line</a>
+                                <a class="{{ Route::is('post.index') ? 'active' : '' }}" href="{{ route('post.index', $user->profile_number) }}" title="" data-ripple="">time line</a>
                                 <a class="" href="timeline-photos.html" title="" data-ripple="">Fotos</a>
                                 <a class="" href="timeline-videos.html" title="" data-ripple="">Videos</a> 
                                 @if (Auth::user()->profile_number != $user->profile_number)                               
-                                <a class="{{ route::is('profile.index') ? 'active' : '' }}" href="{{ route('profile.index', $user->profile_number) }}" title="" data-ripple="">Sobre {{ $user->name }}</a>
+                                <a class="{{ Route::is('profile.index') ? 'active' : '' }}" href="{{ route('profile.index', $user->profile_number) }}" title="" data-ripple="">Sobre {{ $user->nickname }}</a>
                                 @endif
                             </li>
                         </ul>

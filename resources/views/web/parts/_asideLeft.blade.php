@@ -15,36 +15,22 @@
                 <a href="{{ route('profile.edit', Auth::user()->profile_number) }}" title="">Perfil</a>
             </li>
             <li>
-                <i class="ti-image"></i>
-                <a href="timeline-photos.html" title="">Imagenes</a>
-            </li>
-            <li>
-                <i class="ti-video-camera"></i>
-                <a href="timeline-videos.html" title="">videos</a>
-            </li>
-            <li>
-                <i class="ti-comments-smiley"></i>
-                <a href="messages.html" title="">Messages</a>
-            </li>
-            <li>
-                <i class="ti-bell"></i>
-                <a href="notifications.html" title="">Notifications</a>
-            </li>
-            <li>
-                <i class="ti-share"></i>
-                <a href="people-nearby.html" title="">People Nearby</a>
-            </li>
-            <li>
-                <i class="fa fa-bar-chart-o"></i>
-                <a href="insights.html" title="">insights</a>
-            </li>
-            <li>
                 <i class="ti-power-off"></i>
-                <a href="landing.html" title="">Logout</a>
+                <a href="{{ route('logout') }}"
+                onclick="event.preventDefault(); document.getElementById('logout-form').submit();" title="">Salir</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
             </li>
         </ul>
-    </div><!-- Shortcuts -->
+    </div>
+
     <div class="widget">
+        <h4 class="widget-title" style="margin-bottom: 0%;">últimas novedades</h4>
+        
+    </div>
+
+    {{-- <div class="widget">
         <h4 class="widget-title">Recent Activity</h4>
         <ul class="activitiez">
             <li>
@@ -73,34 +59,34 @@
         <h4 class="widget-title">Who's follownig</h4>
         <ul class="followers">
             <li>
-                <figure><img src="{{ asset('styleWeb/images/resources/friend-avatar2.jpg')}}" alt=""></figure>
+                <figure><img src="{{ asset('styleWeb/images/resources/friend-avatar2.jpg') }}" alt=""></figure>
                 <div class="friend-meta">
                     <h4><a href="time-line.html" title="">Kelly Bill</a></h4>
                     <a href="#" title="" class="underline">Add Friend</a>
                 </div>
             </li>
             <li>
-                <figure><img src="{{ asset('styleWeb/images/resources/friend-avatar4.jpg')}}" alt=""></figure>
+                <figure><img src="{{ asset('styleWeb/images/resources/friend-avatar4.jpg') }}" alt=""></figure>
                 <div class="friend-meta">
                     <h4><a href="time-line.html" title="">Issabel</a></h4>
                     <a href="#" title="" class="underline">Add Friend</a>
                 </div>
             </li>
             <li>
-                <figure><img src="{{ asset('styleWeb/images/resources/friend-avatar6.jpg')}}" alt=""></figure>
+                <figure><img src="{{ asset('styleWeb/images/resources/friend-avatar6.jpg') }}" alt=""></figure>
                 <div class="friend-meta">
                     <h4><a href="time-line.html" title="">Andrew</a></h4>
                     <a href="#" title="" class="underline">Add Friend</a>
                 </div>
             </li>
             <li>
-                <figure><img src="{{ asset('styleWeb/images/resources/friend-avatar8.jpg')}}" alt=""></figure>
+                <figure><img src="{{ asset('styleWeb/images/resources/friend-avatar8.jpg') }}" alt=""></figure>
                 <div class="friend-meta">
                     <h4><a href="time-line.html" title="">Sophia</a></h4>
                     <a href="#" title="" class="underline">Add Friend</a>
                 </div>
             </li>
-            
+
         </ul>
-    </div><!-- who's following -->
+    </div> --}}
 </aside>

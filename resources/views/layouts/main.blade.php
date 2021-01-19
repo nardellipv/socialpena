@@ -38,7 +38,7 @@
                                 @yield('content')
                                 <!-- centerl meta -->
                                 <div class="col-lg-3">
-                                    {{--  @include('web.parts._asideRight')  --}}
+                                    @include('web.parts._asideRight')
                                 </div><!-- sidebar -->
                             </div>
                         </div>
@@ -161,6 +161,7 @@
 
     @yield('js')
     @toastr_js
+    @toastr_render
 
 </body>
 

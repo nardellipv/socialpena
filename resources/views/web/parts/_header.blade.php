@@ -125,8 +125,8 @@
         </a>
     </div>
 
-    <div class="top-area">
-        {{--  <ul class="main-menu">
+    {{--  <div class="top-area">
+        <ul class="main-menu">
             <li>
                 <a href="#" title="">Home</a>
                 <ul>
@@ -179,7 +179,7 @@
                     <li><a href="widgets.html" title="">Widgts</a></li>
                 </ul>
             </li>
-        </ul>  --}}
+        </ul>  
         <ul class="setting-area">
             <li>
                 <a href="#" title="Home" data-ripple=""><i class="ti-search"></i></a>
@@ -322,15 +322,15 @@
                 </div>
             </li>
         </ul>
-        <div class="user-img">
+           <div class="user-img">
             @if ($user->picture)
                 <img src="{{ asset('styleWeb/users/' . $user->number_member) }}" alt="">
             @else
                 <img src="{{ asset('styleWeb/images/logo.png') }}" alt="" style="width: 65%;">
             @endif
             <div class="user-setting">
-                <a href="#" title=""><i class="ti-pencil-alt"></i>perfil</a>
-                <a href="{{ route('post.index', $user->profile_number) }}" title=""><i class="ti-menu"></i>Time
+                <a href="{{ route('profile.edit', Auth::user()->profile_number) }}" title=""><i class="ti-pencil-alt"></i>perfil</a>
+                <a href="{{ route('post.index', Auth::user()->profile_number) }}" title=""><i class="ti-menu"></i>Time
                     Line</a>
                 <a href="{{ route('logout') }}"
                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();" title=""><i
@@ -339,6 +339,6 @@
                     @csrf
                 </form>
             </div>
-        </div>
-    </div>
-</div><!-- topbar -->
+        </div> 
+    </div>  --}}
+</div>

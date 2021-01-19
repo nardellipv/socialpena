@@ -24,6 +24,7 @@ class ProfileUpdateRequest extends FormRequest
     public function rules()
     {
         return [
+            'nickname' => 'max:50',
             'about' => 'required | min:10',
             'region_id' => 'required',
             'dni' => 'required | numeric',
@@ -35,6 +36,7 @@ class ProfileUpdateRequest extends FormRequest
     public function messages()
     {
         return [
+            'nickname.max' => 'El máximo para el apodo son 50 caracteres',
             'about.required' => 'El campo sobre mi es requerido',
             'about.min' => 'Es muy corto lo que escribiste sobre ti',
             'region_id.required' => 'El campo Localidad es requerido',

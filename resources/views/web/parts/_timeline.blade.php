@@ -10,8 +10,8 @@
     <script>
         tinymce.init({
             selector: "#mytextarea",
-            plugins: "emoticons",
-            toolbar: "emoticons",
+            plugins: "emoticons media image",
+            toolbar: 'bold italic underline | forecolor backcolor casechange permanentpen formatpainter removeformat | emoticons | media image',
             toolbar_location: "bottom",
             menubar: false
         });
@@ -21,73 +21,64 @@
 
 
 @section('content')
-
     <div class="col-lg-6">
-        <div class="central-meta">
+        {{--  <div class="central-meta">
+            @include('alerts.error')
             <div class="new-postbox">
                 <figure>
-                    @if ($user->picture)
-                        <img src="{{ asset('styleWeb/users/' . $user->number_member) }}" alt="">
+                    @if ($user->photo)
+                        <img src="{{ asset('users/' . $user->profile_number . '/57x89-' . $user->photo) }}" alt="">
                     @else
                         <img src="{{ asset('styleWeb/images/logo.png') }}" alt="">
                     @endif
                 </figure>
                 <div class="newpst-input">
-                    <form method="post">
-                        <textarea rows="2" placeholder="Escribe algo... {{ $user->name }}" id="mytextarea"></textarea>
+                    <form method="post" action="{{ route('post.newPost') }}" enctype="multipart/form-data">
+                        @csrf
+                        <textarea rows="1" placeholder="Escribe algo... {{ Auth::user()->nickname }}" name="text"
+                            id="mytextarea"></textarea>
                         <div class="attachments">
                             <ul>
                                 <li>
-                                    <i class="fa fa-music"></i>
-                                    <label class="fileContainer">
-                                        <input type="file">
-                                    </label>
-                                </li>
-                                <li>
                                     <i class="fa fa-image"></i>
                                     <label class="fileContainer">
-                                        <input type="file">
+                                        <input type="file" name="picture">
                                     </label>
                                 </li>
                                 <li>
-                                    <i class="fa fa-video-camera"></i>
-                                    <label class="fileContainer">
-                                        <input type="file">
-                                    </label>
-                                </li>
-                                <li>
-                                    <i class="fa fa-camera"></i>
-                                    <label class="fileContainer">
-                                        <input type="file">
-                                    </label>
-                                </li>
-                                <li>
-                                    <button type="submit">Post</button>
+                                    <button type="submit">Publicar</button>
                                 </li>
                             </ul>
                         </div>
                     </form>
                 </div>
+
             </div>
-        </div><!-- add post new box -->
+        </div>  --}}
         <div class="loadMore">
-            @foreach ($posts as $post)
-                <div class="central-meta item">
+            @foreach ($posts as $key => $post)
+                <div class="central-meta item" id='{{ $key }}'>
                     <div class="user-post">
                         <div class="friend-info">
                             <figure>
-                                @if ($user->picture)
-                                    <img src="{{ asset('styleWeb/users/' . $user->number_member) }}" alt="">
+                                @if ($user->photo)
+                                    <img src="{{ asset('users/' . $user->profile_number . '/57x89-' . $user->photo) }}"
+                                        alt="">
                                 @else
                                     <img src="{{ asset('styleWeb/images/logo.png') }}" alt="">
                                 @endif
                             </figure>
                             <div class="friend-name">
-                                <ins><a href="time-line.html" title="">{{ $post->user->name }}</a></ins>
+                                <ins><a href="{{ route('post.index', $post->user->profile_number) }}"
+                                        title="">{{ $post->user->nickname }}</a></ins>
                                 <span>publicado: {{ \Carbon\Carbon::parse($post->created_at)->format('d-M-Y') }}</span>
                             </div>
                             <div class="post-meta">
-                                <img src="{{ $post->picture }}" alt="">
+                                <img src="{{ asset('users/' . $user->profile_number . '/592x320-' . $post->picture) }}"
+                                    alt="">
+                                <div class="description">
+                                    <p>{!! $post->text !!}</p>
+                                </div>
                                 <div class="we-video-info">
                                     <ul>
                                         <li>
@@ -98,20 +89,19 @@
                                         </li>
                                         <li>
                                             <span class="like" data-toggle="tooltip" title="like">
-                                                <i class="ti-heart"></i>
+                                                <a href="{{ route('post.likePost', [$post, 'idLike' => $key]) }}"><i
+                                                        class="ti-heart"></i></a>
                                                 <ins>{{ $post->like }}</ins>
                                             </span>
                                         </li>
                                         <li>
                                             <span class="dislike" data-toggle="tooltip" title="dislike">
-                                                <i class="ti-heart-broken"></i>
+                                                <a href="{{ route('post.disLikePost', [$post, 'idDislike' => $key]) }}"><i
+                                                        class="ti-heart-broken"></i></a>
                                                 <ins>{{ $post->dislike }}</ins>
                                             </span>
                                         </li>
                                     </ul>
-                                </div>
-                                <div class="description">
-                                    <p>{{ $post->text }}</p>
                                 </div>
                             </div>
                         </div>
@@ -120,52 +110,57 @@
                                 @foreach ($post->comment as $comment)
                                     <li>
                                         <div class="comet-avatar">
-                                            @if ($user->picture)
-                                                <img src="{{ asset('styleWeb/users/' . $user->number_member) }}" alt="">
+                                            @if ($user->photo)
+                                            <img src="{{ asset('users/' . $comment->user->profile_number . '/57x89-' . $comment->user->photo) }}"
+                                                alt="">
                                             @else
-                                                <img src="{{ asset('styleWeb/images/logo.png') }}" alt="">
+                                                <img src="{{ asset('styleWeb/images/logo.png') }}" style="width: 60%;">
                                             @endif
                                         </div>
                                         <div class="we-comment">
                                             <div class="coment-head">
                                                 <h5><a href="{{ route('post.index', $comment->user->profile_number) }}"
-                                                        title="">{{ $comment->user->name }}</a></h5>
+                                                        title="">{{ $comment->user->nickname }}</a></h5>
                                                 <span>{{ \Carbon\Carbon::parse($comment->created_at)->format('d-M-Y') }}</span>
                                             </div>
-                                            <p>{{ $comment->comment }}</p>
+                                            <p>{!! $comment->comment !!}</p>
                                         </div>
                                     </li>
                                 @endforeach
                                 <li class="post-comment">
                                     <div class="comet-avatar">
-                                        @if ($user->picture)
-                                            <img src="{{ asset('styleWeb/users/' . $user->number_member) }}" alt="">
+                                        @if ($user->photo)
+                                        <img src="{{ asset('users/' . Auth::user()->profile_number . '/57x89-' . Auth::user()->photo) }}"
+                                    alt="">
                                         @else
                                             <img src="{{ asset('styleWeb/images/logo.png') }}" alt="">
                                         @endif
                                     </div>
-                                    <div class="post-comt-box">
-                                        <form method="post">
-                                            <textarea placeholder="Post your comment"></textarea>
-                                            <div class="add-smiles">
-                                                <span class="em em-expressionless" title="add icon"></span>
+                                    <div class="newpst-input">
+                                        <form method="post"
+                                            action="{{ route('post.commentPost', [$post, 'idComment' => $key]) }}">
+                                            @csrf
+                                            <textarea id="{{ $key }}comment" name="comment"
+                                                placeholder="Comentar Publicación"></textarea>
+                                            <div class="attachments">
+                                                <ul>
+                                                    <li>
+                                                        <button type="submit">Comentar Publicacion</button>
+                                                    </li>
+                                                </ul>
                                             </div>
-                                            <div class="smiles-bunch">
-                                                <i class="em em---1"></i>
-                                                <i class="em em-smiley"></i>
-                                                <i class="em em-anguished"></i>
-                                                <i class="em em-laughing"></i>
-                                                <i class="em em-angry"></i>
-                                                <i class="em em-astonished"></i>
-                                                <i class="em em-blush"></i>
-                                                <i class="em em-disappointed"></i>
-                                                <i class="em em-worried"></i>
-                                                <i class="em em-kissing_heart"></i>
-                                                <i class="em em-rage"></i>
-                                                <i class="em em-stuck_out_tongue"></i>
-                                            </div>
-                                            <button type="submit"></button>
                                         </form>
+                                        <script>
+                                            tinymce.init({
+                                                selector: "#{{ $key }}comment",
+                                                height: 100,
+                                                plugins: "emoticons image",
+                                                toolbar: 'emoticons | media image',
+                                                toolbar_location: "top",
+                                                menubar: false
+                                            });
+
+                                        </script>
                                     </div>
                                 </li>
                             </ul>
