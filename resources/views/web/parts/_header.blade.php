@@ -124,7 +124,6 @@
             <img src="{{ asset('styleWeb/images/logo.png') }}" alt="log peña martin palermo" style="width: 70%;margin-left: 150%;">
         </a>
     </div>
-
     {{--  <div class="top-area">
         <ul class="main-menu">
             <li>

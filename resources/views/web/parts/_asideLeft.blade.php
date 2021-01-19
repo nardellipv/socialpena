@@ -27,7 +27,6 @@
 
     <div class="widget">
         <h4 class="widget-title" style="margin-bottom: 0%;">últimas novedades</h4>
-        
     </div>
 
     {{-- <div class="widget">

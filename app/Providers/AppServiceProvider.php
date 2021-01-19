@@ -66,7 +66,7 @@ class AppServiceProvider extends ServiceProvider
                 'web.parts._asideLeft',
             ],
             function ($view) {
-                $postComments = Comment::with(['post','user'])
+                $postComments = Comment::with(['post', 'user'])
                     ->orderBy('comment', 'DESC')
                     ->take(3)
                     ->get();
